@@ -456,6 +456,17 @@ public class Tank {
         //  未相撞
         return false;
     }
+
+    public boolean outPoisonRing(PoisonRing pr){//坦克到毒圈外就会扣血
+        if(this.live&&!(this.getRect().intersects(pr.geRect()))){
+            if(getLife()<=0)
+                this.setLive(false);
+            this.setLife(this.getLife()-1);//每50毫秒减一滴血
+            return true;
+        }
+        return false;
+    }
+
     //  血条类
     private class BloodBar{
         //  画出血条
@@ -466,10 +477,18 @@ public class Tank {
             g.setColor(Color.RED);
             //  画空心矩形（血条背景）
             g.drawRect(x,y-10,WIDTH,10);
-            //  算出血条对应长度
-            int w=WIDTH*life/100;
-            //  画血条
-            g.fillRect(x,y-10,w,10);
+            if(good) {
+                int w = WIDTH * life/ 100;
+                //  算出血条对应长度
+                g.fillRect(x,y-10,w,10);
+            }else
+            {
+                int index=Difficulty.diffIndex(Difficulty.getDiff());
+                //  为了保持血条和坦克宽度一致，100要乘index
+                int w = WIDTH*life / (100*index);
+                //  画血条
+                g.fillRect(x,y-10,w,10);
+            }
             //  还原画笔颜色
             g.setColor(c);
             //  显示剩余血量

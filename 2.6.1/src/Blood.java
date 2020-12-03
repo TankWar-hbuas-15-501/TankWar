@@ -1,9 +1,5 @@
 import java.awt.*;
 
-
-
-
-
 //  血块类（吃掉加血）
 public class Blood {
     //  血块xy坐标，宽和高

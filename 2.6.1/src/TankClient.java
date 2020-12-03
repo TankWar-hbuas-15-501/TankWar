@@ -16,8 +16,10 @@ public class TankClient extends Frame {
     Wall w1 = new Wall(100, 200, 20, 150, this),
             w2 = new Wall(300, 100, 300, 20, this);
     //  定义一个友方坦克
-    Tank myTank = new Tank(50, 50, true, Tank.Direction.STOP, this);
+    Tank myTank = new Tank(170, 100, true, Tank.Direction.STOP, this);
     //  创建容器，存放敌方坦克
+    PoisonRing pr = new PoisonRing(100);
+    //定义一个5000毫秒缩小一次的毒圈
     List<Tank> tankList = new ArrayList<Tank>();
     //  创建容器，存放爆炸
     List<Explode> explodeList = new ArrayList<Explode>();
@@ -99,6 +101,8 @@ public class TankClient extends Frame {
         //  判断我方坦克是否撞墙
         myTank.collidesWithWall(w1);
         myTank.collidesWithWall(w2);
+        //判断我方坦克是否在毒圈外
+        myTank.outPoisonRing(pr);
         //  判断我方坦克是否与敌方坦克相撞
         //myTank.collidesWithTanks(tankList);
         //  判断我方坦克是否迟到坦克
@@ -112,6 +116,8 @@ public class TankClient extends Frame {
             t.collidesWithWall(w2);
             //  判断敌方坦克是否相撞
             t.collidesWithTanks(tankList);
+            //判断敌方坦克是否在毒圈外
+            t.outPoisonRing(pr);
             t.draw(g);
         }
         //  画爆炸
@@ -125,6 +131,8 @@ public class TankClient extends Frame {
         w2.draw(g);
         //  画出血块
         b.draw(g);
+        //画出毒圈
+        pr.draw(g);
     }
 
     //  启动窗口
@@ -175,7 +183,7 @@ public class TankClient extends Frame {
                 repaint();
                 //  延时25毫秒
                 try {
-                    Thread.sleep(25);
+                    Thread.sleep(50);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
