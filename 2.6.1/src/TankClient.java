@@ -8,9 +8,9 @@ import java.util.ArrayList;
 //  继承Frame图形窗口
 public class TankClient extends Frame {
     //  窗口宽度
-    public static final int GAME_WIDTH = 800;
+    public static final int GAME_WIDTH = 1200;
     //  窗口高度
-    public static final int GAME_HEIGHT = 600;
+    public static final int GAME_HEIGHT = 1000;
 
     //  定义两面墙
     Wall w1 = new Wall(100, 200, 20, 150, this),
@@ -142,7 +142,7 @@ public class TankClient extends Frame {
         //  添加敌方坦克
         InitTanks(Difficulty.getDiff());
         //  定位窗口位置，
-        this.setLocation(400, 300);
+        this.setLocation(300, 50);
         //  指定窗口大小，宽800，高600
         this.setSize(GAME_WIDTH, GAME_HEIGHT);
         //  设置标题栏

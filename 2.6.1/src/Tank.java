@@ -11,9 +11,9 @@ public class Tank {
     //  坦克向y轴方向移动速度
     public static final int YSPEED = 5;
     //  坦克宽度
-    public static final int WIDTH = 30;
+    public static final int WIDTH = 25;
     //  坦克高度
-    public static final int HEIGHT = 30;
+    public static final int HEIGHT = 25;
 
     //  坦克生存变量（判断坦克是否存活）
     private boolean live = true;
@@ -51,6 +51,31 @@ public class Tank {
     private Direction dir = Direction.STOP;
     //  定义炮筒方向（初始向下）
     private Direction ptDir = Direction.D;
+    //将图片导入
+    private static Image[] tankimg;
+    private static Image[] ditankimg;
+    static {
+        tankimg = new Image[8];
+        tankimg[0] = Toolkit.getDefaultToolkit().createImage("res/up.png");
+        tankimg[1] = Toolkit.getDefaultToolkit().createImage("res/down.png");
+        tankimg[2] = Toolkit.getDefaultToolkit().createImage("res/left.png");
+        tankimg[3] = Toolkit.getDefaultToolkit().createImage("res/right.png");
+        tankimg[4] = Toolkit.getDefaultToolkit().createImage("res/ld.png");
+        tankimg[5] = Toolkit.getDefaultToolkit().createImage("res/rd.png");
+        tankimg[6] = Toolkit.getDefaultToolkit().createImage("res/lu.png");
+        tankimg[7] = Toolkit.getDefaultToolkit().createImage("res/ru.png");
+
+        ditankimg = new Image[8];
+        ditankimg[0] = Toolkit.getDefaultToolkit().createImage("res/diu.png");
+        ditankimg[1] = Toolkit.getDefaultToolkit().createImage("res/did.png");
+        ditankimg[2] = Toolkit.getDefaultToolkit().createImage("res/dil.png");
+        ditankimg[3] = Toolkit.getDefaultToolkit().createImage("res/dir.png");
+        ditankimg[4] = Toolkit.getDefaultToolkit().createImage("res/dild.png");
+        ditankimg[5] = Toolkit.getDefaultToolkit().createImage("res/dird.png");
+        ditankimg[6] = Toolkit.getDefaultToolkit().createImage("res/dilu.png");
+        ditankimg[7] = Toolkit.getDefaultToolkit().createImage("res/diru.png");
+    }
+
 
     //  敌方坦克固定方向移动步数（最少3步，最多14步）
     private int step = r.nextInt(12) + 3;
@@ -126,6 +151,7 @@ public class Tank {
         g.setColor(c);
         //  画出血条
         bb.draw(g);
+
         //  画出炮筒
         /*
          *   drawLine()方法
@@ -134,43 +160,81 @@ public class Tank {
          *   形参三：直线结束横坐标x2
          *   形参四：直线结束纵坐标y2
          * */
-        switch (ptDir) {
-            //  左（←）
-            case L:
-                g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x, y + Tank.HEIGHT / 2);
-                break;
-            //  左上（↖）
-            case LU:
-                g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x, y);
-                break;
-            //  左下（↙）
-            case LD:
-                g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x, y + Tank.HEIGHT);
-                break;
-            //  右（→）
-            case R:
-                g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH, y + Tank.HEIGHT / 2);
-                break;
-            //右上（↗）
-            case RU:
-                g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH, y);
-                break;
-            //  右下（↘）s
-            case RD:
-                g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH, y + Tank.HEIGHT);
-                break;
-            //  上（↑）
-            case U:
-                g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH / 2, y);
-                break;
-            //  下（↓）
-            case D:
-                g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH / 2, y + Tank.HEIGHT);
-                break;
+        if (good) {//根据炮筒方向和好坏画出图片
+            switch (ptDir) {
+                case L:
+                    g.drawImage(tankimg[2], x - 20, y - 15, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x, y + Tank.HEIGHT / 2);
+                    break;
+                case LU:
+                    g.drawImage(tankimg[6], x - 29, y - 29, null);//能让坦克画到上面
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x, y);
+                    break;
+                case U:
+                    g.drawImage(tankimg[0], x - 15, y - 20, null);//能让坦克画到上面
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH / 2, y);
+                    break;
+                case RU:
+                    g.drawImage(tankimg[7], x - 25, y - 30, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH, y);
+                    break;
+                case R:
+                    g.drawImage(tankimg[3], x - 10, y - 15, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH, y + Tank.HEIGHT / 2);
+                    break;
+                case RD:
+                    g.drawImage(tankimg[5], x - 20, y - 25, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH, y + Tank.HEIGHT);
+                    break;
+                case D:
+                    g.drawImage(tankimg[1], x - 14, y - 10, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH / 2, y + Tank.HEIGHT);
+                    break;
+                case LD:
+                    g.drawImage(tankimg[4], x - 27, y - 23, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x, y + Tank.HEIGHT);
+                    break;
+            }//坦克炮筒方向
+            move();
+        }else {
+            switch (ptDir) {
+                case L:
+                    g.drawImage(ditankimg[2], x - 20, y - 15, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x, y + Tank.HEIGHT / 2);
+                    break;
+                case LU:
+                    g.drawImage(ditankimg[6], x - 29, y - 29, null);//能让坦克画到上面
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x, y);
+                    break;
+                case U:
+                    g.drawImage(ditankimg[0], x - 15, y - 20, null);//能让坦克画到上面
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH / 2, y);
+                    break;
+                case RU:
+                    g.drawImage(ditankimg[7], x - 25, y - 30, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH, y);
+                    break;
+                case R:
+                    g.drawImage(ditankimg[3], x - 10, y - 15, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH, y + Tank.HEIGHT / 2);
+                    break;
+                case RD:
+                    g.drawImage(ditankimg[5], x - 20, y - 25, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH, y + Tank.HEIGHT);
+                    break;
+                case D:
+                    g.drawImage(ditankimg[1], x - 14, y - 10, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x + Tank.WIDTH / 2, y + Tank.HEIGHT);
+                    break;
+                case LD:
+                    g.drawImage(ditankimg[4], x - 27, y - 23, null);
+                    g.drawLine(x + Tank.WIDTH / 2, y + Tank.HEIGHT / 2, x, y + Tank.HEIGHT);
+                    break;
+            }//坦克炮筒方向
+            move();
         }
-        //  进行坦克移动
-        move();
-    }
+    }//使坦克独立控制自己的画法
+
 
     //  坦克移动
     void move() {
@@ -476,18 +540,18 @@ public class Tank {
             //  设置血条背景画笔颜色RED红色
             g.setColor(Color.RED);
             //  画空心矩形（血条背景）
-            g.drawRect(x,y-10,WIDTH,10);
+            g.drawRect(x-13,y+40,WIDTH*2,5);
             if(good) {
-                int w = WIDTH * life/ 100;
+                int w = WIDTH * life/ 100*2;
                 //  算出血条对应长度
-                g.fillRect(x,y-10,w,10);
+                g.fillRect(x-13,y+40,w,5);
             }else
             {
                 int index=Difficulty.diffIndex(Difficulty.getDiff());
                 //  为了保持血条和坦克宽度一致，100要乘index
-                int w = WIDTH*life / (100*index);
+                int w = WIDTH*life / (100*index)*2;
                 //  画血条
-                g.fillRect(x,y-10,w,10);
+                g.fillRect(x-13,y+40,w,5);
             }
             //  还原画笔颜色
             g.setColor(c);
