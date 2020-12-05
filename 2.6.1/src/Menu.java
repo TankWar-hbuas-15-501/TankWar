@@ -1,6 +1,7 @@
+import foundation.Tank;
 import javafx.scene.layout.Pane;
 import oracle.jrockit.jfr.JFR;
-
+import foundation.TankClient;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
@@ -34,7 +35,18 @@ public class Menu {
         boxHor.add(boxVer);
        boxVer.add(Box.createRigidArea(new Dimension(100,20)));
        //boxVer.add(Box.createVerticalGlue());
-       boxVer.add(new JButton("开始游戏"));
+        JButton temp=new JButton("开始游戏");
+        temp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[]t=new String[1];
+                menuFrame.setVisible(false);
+                TankClient.main(t);
+
+            }
+        });
+        boxVer.add(temp);
+        // boxVer.add(new JButton("开始游戏"));
         boxVer.add(Box.createVerticalStrut(30));
        boxVer.add(new JButton("难度选择"));
         boxVer.add(Box.createVerticalStrut(30));
