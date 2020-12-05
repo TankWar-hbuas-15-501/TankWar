@@ -1,3 +1,5 @@
+package foundation;
+
 //  难易度类
 public class Difficulty {
     //  定义难度枚举

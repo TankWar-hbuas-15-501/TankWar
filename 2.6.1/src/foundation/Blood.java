@@ -1,3 +1,5 @@
+package foundation;
+
 import java.awt.*;
 
 //  血块类（吃掉加血）

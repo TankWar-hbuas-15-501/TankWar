@@ -1,10 +1,7 @@
-
+package foundation;
 
 import java.awt.*;
-import java.io.IOException;
-import java.nio.CharBuffer;
 import java.util.List;
-import java.util.ArrayList;
 
 //  子弹类
 public class Missile {

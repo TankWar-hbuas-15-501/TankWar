@@ -1,3 +1,5 @@
+package foundation;
+
 import java.awt.*;
 
 public class PoisonRing {

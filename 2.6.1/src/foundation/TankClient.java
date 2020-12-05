@@ -1,4 +1,4 @@
-//  导入Frame类
+package foundation;//  导入Frame类
 
 import java.awt.*;
 import java.awt.event.*;

@@ -1,3 +1,4 @@
+package foundation;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -102,7 +103,7 @@ public class Tank {
         //  敌方
         else{
             //  血量根据难度确定
-            int index=Difficulty.diffIndex(Difficulty.getDiff());
+            int index= Difficulty.diffIndex(Difficulty.getDiff());
             //  根据难度设定血量
             this.life=100*index;
         }
