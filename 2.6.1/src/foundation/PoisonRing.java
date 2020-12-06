@@ -21,7 +21,7 @@ public class PoisonRing {
             h = h-70;
             this.time = oldtime;
         }
-        if(w<=175){
+        if(w<=100){
             x=100;y=100;
             w=tc.GAME_HEIGHT-30;h=tc.GAME_HEIGHT-80;
         }

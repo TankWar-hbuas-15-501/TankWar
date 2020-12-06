@@ -42,7 +42,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="js.buildTools.grunt.grunt-cli.package" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/2.6.1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs.jest.jest_package" value="" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -86,7 +86,6 @@
       <workItem from="1606985137861" duration="43000" />
       <workItem from="1607156138041" duration="364000" />
       <workItem from="1607156526306" duration="282000" />
-      <workItem from="1607165924121" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="modify">
       <created>1607156404539</created>
@@ -132,10 +131,6 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1607156790991" />
-    <state x="997" y="329" key="FileChooserDialogImpl" timestamp="1607165954125">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="997" y="329" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607165954125" />
     <state x="5" y="0" key="SettingsEditor" timestamp="1607156786190">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

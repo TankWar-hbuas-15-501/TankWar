@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 //  继承Frame图形窗口
 public class TankClient extends Frame {
-    public static boolean moshi = true;
     //  窗口宽度
     public static final int GAME_WIDTH = 1200;
     //  窗口高度
@@ -19,8 +18,7 @@ public class TankClient extends Frame {
     //  定义一个友方坦克
     Tank myTank = new Tank(170, 100, true, Tank.Direction.STOP, this);
     //  创建容器，存放敌方坦克
-
-    PoisonRing pr = new PoisonRing(150);
+    PoisonRing pr = new PoisonRing(100);
     //定义一个5000毫秒缩小一次的毒圈
     List<Tank> tankList = new ArrayList<Tank>();
     //  创建容器，存放爆炸
@@ -104,9 +102,7 @@ public class TankClient extends Frame {
         myTank.collidesWithWall(w1);
         myTank.collidesWithWall(w2);
         //判断我方坦克是否在毒圈外
-        //根据moshi参数改变模式
-        if(moshi)
-            myTank.outPoisonRing(pr);
+        myTank.outPoisonRing(pr);
         //  判断我方坦克是否与敌方坦克相撞
         //myTank.collidesWithTanks(tankList);
         //  判断我方坦克是否迟到坦克
@@ -121,8 +117,7 @@ public class TankClient extends Frame {
             //  判断敌方坦克是否相撞
             t.collidesWithTanks(tankList);
             //判断敌方坦克是否在毒圈外
-            if(moshi)
-                t.outPoisonRing(pr);
+            t.outPoisonRing(pr);
             t.draw(g);
         }
         //  画爆炸
@@ -137,7 +132,6 @@ public class TankClient extends Frame {
         //  画出血块
         b.draw(g);
         //画出毒圈
-        if(moshi)
         pr.draw(g);
     }
 
