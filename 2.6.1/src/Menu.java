@@ -1,37 +1,58 @@
+
 import foundation.TankClient;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
 import javax.swing.*;
-
+/*
+@author: wangquanliu
+@time: 2020/12/7
+@describe: 实现程序的菜单项
+@see:   panelMainMenu     主菜单容器
+        panelModelSelect 模式选择容器
+        cards            主容器类，主要用于界面切换
+ */
 public class Menu {
     private JFrame menuFrame;//菜单框架
 
-    private JPanel panelMainMenu = new JPanel();//主菜单容器
-    private JPanel panelModelSelect=new JPanel();//模式选择容器
-    private JPanel cards=new JPanel(new CardLayout());//主容器类，主要用于界面切换
-    private Box boxVer = Box.createVerticalBox(), boxHor = Box.createHorizontalBox();
+    private JPanel panelMainMenu = new JPanel();
+    private JPanel panelModelSelect=new JPanel();
+    private JPanel cards=new JPanel(new CardLayout());
 
     Menu() {
         iniMenu();
     }
 
-    void addButton(String text, String icon) {//添加按钮，并设置文字和图片
+    /*
+    @param: String 按键上的文本
+    @param: String 按键上显示图片的路径
+    @describe: 在按键上显示文本和图片
+    @return: void
+     */
+    void addButton(String text, String icon) {
         JButton temp = new JButton(text, createImageIcon(icon, ""));
         panelMainMenu.add(temp);
         menuFrame.add(panelMainMenu);
     }
-
-    void addButton(String text) {//添加按钮，并设置文字
+        /*
+        @param: String 按键上的文本
+        @describe: 在按键上显示文本
+        @return: void
+         */
+    void addButton(String text) {
         JButton temp = new JButton(text);
-
         panelMainMenu.add(temp);
         menuFrame.add(panelMainMenu);
     }
-public class ActEatChickenMode extends JFrame implements ActionListener{
+    public class ActEatChickenMode extends JFrame implements ActionListener{
         @Override
-    public void actionPerformed(ActionEvent e){//事件监听，吃鸡模式按键监听
+        /*
+         @param:    ActionEvent 动作事件
+         @describe:事件监听，吃鸡模式按键监听
+         @return:   void
+         */
+    public void actionPerformed(ActionEvent e){
             String[] t = new String[1];
             menuFrame.setVisible(false);
             TankClient.main(t);//调用游戏
@@ -39,39 +60,47 @@ public class ActEatChickenMode extends JFrame implements ActionListener{
 }
 public class ActNormalMode extends JFrame implements ActionListener{
         @Override
-    public void actionPerformed(ActionEvent e){//事件监听，普通模式按键监听
+        /*
+         @param:    ActionEvent 动作事件
+         @describe:事件监听，普通模式按键监听
+         @return:   void
+         */
+    public void actionPerformed(ActionEvent e){
             String[] t = new String[1];
             menuFrame.setVisible(false);
             TankClient.main(t);//调用 游戏
-            TankClient.mode = false;//
+            TankClient.mode = false;
         }
 }
 public class ActModelSelect extends JFrame implements ActionListener{
         @Override
+        /*
+         @param:    ActionEvent 动作事件
+         @describe:事件监听，模式选择按键监听
+         @return:   void
+         */
     public void actionPerformed(ActionEvent e){
             Box temp=Box.createVerticalBox();
-            temp.add(Box.createVerticalStrut(70));
-
+            temp.add(Box.createVerticalStrut(70));//设置间距
             JButton buttonEatChicken = new JButton("吃鸡模式");
             buttonEatChicken.addActionListener(new ActEatChickenMode());
-
             JButton buttonNormal = new JButton("普通模式");
             buttonNormal.addActionListener(new ActNormalMode());
-            temp.add(buttonEatChicken);
-            temp.add(Box.createVerticalStrut(30));
-            temp.add(buttonNormal);
+            temp.add(buttonEatChicken);//添加按键
+            temp.add(Box.createVerticalStrut(30));//设置间距
+            temp.add(buttonNormal);//添加按键
+            JButton buttonBack=new JButton("返回");
+
             panelModelSelect.add(temp);
             //panelModelSelect.add(buttonNormal);
-
-
             CardLayout c1=(CardLayout)(cards.getLayout()) ;
             c1.show(cards,"modelSelect");
         }
 
 }
+
     void iniMenu() {
-
-
+        Box boxVer = Box.createVerticalBox(), boxHor = Box.createHorizontalBox();
         menuFrame = new JFrame("坦克大战");
         menuFrame.setLocation(300, 50);
         menuFrame.setSize(400, 400);
@@ -103,8 +132,13 @@ public class ActModelSelect extends JFrame implements ActionListener{
         menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menuFrame.setVisible(true);
     }
-
-    private static ImageIcon createImageIcon(String path, String description) {//创建图片资源
+    /*
+            @param:    String 图片路径
+            @param:    String 图片描述
+            @describe: 读取path的图片路径,成功返回资源，失败返回null
+            @return:   ImageIcon
+            */
+    private static ImageIcon createImageIcon(String path, String description) {
         URL imgURL = Menu.class.getResource(path);
         if (imgURL != null) return new ImageIcon(imgURL, description);
         else {
