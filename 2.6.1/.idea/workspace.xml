@@ -61,11 +61,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\12031\Documents\GitHub\TankWar\2.6.1\res" />
       <recent name="C:\Users\Administrator\Documents\GitHub\TankWar\2.6.1\res" />
       <recent name="C:\Users\LYF\Documents\HBUAS\Lesson\Java\TankWar\2.6.1\src" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\12031\Documents\GitHub\TankWar\2.6.1\res" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Menu">
+  <component name="RunManager" selected="Application.TankClient">
     <configuration name="Menu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Menu" />
       <module name="2.6.1" />
@@ -82,8 +86,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Menu" />
         <item itemvalue="Application.TankClient" />
+        <item itemvalue="Application.Menu" />
       </list>
     </recent_temporary>
   </component>
@@ -103,6 +107,10 @@
       <workItem from="1607165957699" duration="450000" />
       <workItem from="1607166435847" duration="50000" />
       <workItem from="1607168246803" duration="1144000" />
+      <workItem from="1607225757428" duration="9897000" />
+      <workItem from="1607239033712" duration="57000" />
+      <workItem from="1607247459897" duration="354000" />
+      <workItem from="1607256526068" duration="2439000" />
     </task>
     <task id="LOCAL-00001" summary="增加菜单类">
       <created>1607159982193</created>
@@ -147,51 +155,59 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1605916110961" />
-    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1607063160010">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="365" y="0" key="CommitChangelistDialog2" timestamp="1607225773321">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606264254452" />
+    <state x="365" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1607225773321" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1607239085817">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607239085817" />
     <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607063160010" />
-    <state width="1025" height="279" key="GridCell.Tab.0.bottom" timestamp="1607169394466">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1607260511371">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607164766064" />
-    <state width="1493" height="73" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605958711466" />
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
     <state width="1025" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607169394466" />
-    <state width="1025" height="279" key="GridCell.Tab.0.center" timestamp="1607169394466">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1607260511371">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1607164766062" />
-    <state width="1493" height="73" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605958711466" />
+    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
     <state width="1025" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607169394466" />
-    <state width="1025" height="279" key="GridCell.Tab.0.left" timestamp="1607169394466">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1607260511371">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1607164766061" />
-    <state width="1493" height="73" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605958711466" />
+    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
     <state width="1025" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607169394466" />
-    <state width="1025" height="279" key="GridCell.Tab.0.right" timestamp="1607169394466">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1607260511371">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1607164766063" />
-    <state width="1493" height="73" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605958711466" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
     <state width="1025" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607169394466" />
-    <state width="1306" height="198" key="GridCell.Tab.1.bottom" timestamp="1607159767410">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1607260511372">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1306" height="198" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607159767410" />
-    <state width="1306" height="198" key="GridCell.Tab.1.center" timestamp="1607159767410">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607260511372" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1607260511371">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1306" height="198" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1607159767410" />
-    <state width="1306" height="198" key="GridCell.Tab.1.left" timestamp="1607159767410">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1607260511371">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1306" height="198" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1607159767410" />
-    <state width="1306" height="198" key="GridCell.Tab.1.right" timestamp="1607159767410">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1607260511371">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1306" height="198" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1607159767410" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
     <state x="270" y="57" key="SettingsEditor" timestamp="1606033819055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

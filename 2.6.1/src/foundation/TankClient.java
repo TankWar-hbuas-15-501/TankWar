@@ -14,8 +14,16 @@ public class TankClient extends Frame {
     public static final int GAME_HEIGHT = 1000;
 
     //  定义两面墙
-    Wall w1 = new Wall(100, 200, 20, 150, this),
-            w2 = new Wall(300, 100, 300, 20, this);
+    Wall w1 = new Wall(440, 800, 30, 30,1, this),
+            w2 = new Wall(570, 920, 30, 30, 0,this),
+            w3 = new Wall(600,950,30,30,2,this),
+            w4 = new Wall(600,920,30,30,0,this),
+            w5 = new Wall(540,920,30,30,1,this),
+            w6 = new Wall(540,950,30,30,3,this),
+            w7 = new Wall(500,800,30,30,1,this),
+            w8 = new Wall(470,800,30,30,4,this),
+            w9 = new Wall(530,800,30,30,1,this),
+            w10 = new Wall(560,800,30,30,1,this);
     //  定义一个友方坦克
     Tank myTank = new Tank(170, 100, true, Tank.Direction.STOP, this);
     //  创建容器，存放敌方坦克
@@ -96,6 +104,15 @@ public class TankClient extends Frame {
             //  判断子弹是否撞墙
             m.hitWall(w1);
             m.hitWall(w2);
+            m.hitWall(w3);
+            m.hitWall(w4);
+            m.hitWall(w5);
+            m.hitWall(w6);
+            m.hitWall(w7);
+            m.hitWall(w8);
+            m.hitWall(w9);
+            m.hitWall(w10);
+
             m.draw(g);
         }
         //  画我方坦克
@@ -103,6 +120,15 @@ public class TankClient extends Frame {
         //  判断我方坦克是否撞墙
         myTank.collidesWithWall(w1);
         myTank.collidesWithWall(w2);
+        myTank.collidesWithWall(w3);
+        myTank.collidesWithWall(w4);
+        myTank.collidesWithWall(w5);
+        myTank.collidesWithWall(w6);
+        myTank.collidesWithWall(w7);
+        myTank.collidesWithWall(w8);
+        myTank.collidesWithWall(w9);
+        myTank.collidesWithWall(w10);
+       // myTank.collidesWithWall(f1);
         //判断我方坦克是否在毒圈外
         //根据moshi参数改变模式
         if(moshi)
@@ -118,6 +144,14 @@ public class TankClient extends Frame {
             //  判断敌方坦克是否撞墙
             t.collidesWithWall(w1);
             t.collidesWithWall(w2);
+            t.collidesWithWall(w3);
+            t.collidesWithWall(w4);
+            t.collidesWithWall(w5);
+            t.collidesWithWall(w6);
+            t.collidesWithWall(w7);
+            t.collidesWithWall(w8);
+            t.collidesWithWall(w9);
+            t.collidesWithWall(w10);
             //  判断敌方坦克是否相撞
             t.collidesWithTanks(tankList);
             //判断敌方坦克是否在毒圈外
@@ -134,6 +168,15 @@ public class TankClient extends Frame {
         //  画墙
         w1.draw(g);
         w2.draw(g);
+        w3.draw(g);
+        w4.draw(g);
+        w5.draw(g);
+        w6.draw(g);
+        w7.draw(g);
+        w8.draw(g);
+        w9.draw(g);
+        w10.draw(g);
+        //f1.draw(g);
         //  画出血块
         b.draw(g);
         //画出毒圈
