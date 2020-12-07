@@ -34,12 +34,21 @@ public class Wall{
 =======
     //  墙的构造方法，五个参数
     public Wall(int x, int y, int w, int h,int index, TankClient tc) {
+<<<<<<< HEAD
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
+=======
 >>>>>>> 93efc341293870539a470358092e3ff590a387ab
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        this.index = index;
+        this.tc = tc;
+
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
 =======
         this.index = index;
         this.tc = tc;

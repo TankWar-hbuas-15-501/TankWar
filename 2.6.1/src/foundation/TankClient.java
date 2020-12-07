@@ -15,9 +15,12 @@ public class TankClient extends Frame {
 
     //  定义两面墙
 <<<<<<< HEAD
+<<<<<<< HEAD
     Wall w1 = new Wall(100, 200, 20, 150, 1,this),
             w2 = new Wall(300, 100, 300, 20,1 ,this);
 =======
+=======
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
     Wall w1 = new Wall(440, 800, 30, 30,1, this),
             w2 = new Wall(570, 920, 30, 30, 0,this),
             w3 = new Wall(600,950,30,30,2,this),
@@ -28,6 +31,9 @@ public class TankClient extends Frame {
             w8 = new Wall(470,800,30,30,4,this),
             w9 = new Wall(530,800,30,30,1,this),
             w10 = new Wall(560,800,30,30,1,this);
+<<<<<<< HEAD
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
+=======
 >>>>>>> 93efc341293870539a470358092e3ff590a387ab
     //  定义一个友方坦克
     Tank myTank = new Tank(170, 100, true, Tank.Direction.STOP, this);
@@ -113,10 +119,13 @@ public class TankClient extends Frame {
             m.hitWall(w1);
             m.hitWall(w2);
 <<<<<<< HEAD
+<<<<<<< HEAD
             for (int j = 0; j < walls.size(); j++) {
                 m.hitWall(walls.get(j));
             }//---使每个子弹和walls容器中墙遍历
 =======
+=======
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
             m.hitWall(w3);
             m.hitWall(w4);
             m.hitWall(w5);
@@ -126,6 +135,9 @@ public class TankClient extends Frame {
             m.hitWall(w9);
             m.hitWall(w10);
 
+<<<<<<< HEAD
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
+=======
 >>>>>>> 93efc341293870539a470358092e3ff590a387ab
             m.draw(g);
         }
@@ -159,10 +171,13 @@ public class TankClient extends Frame {
             t.collidesWithWall(w1);
             t.collidesWithWall(w2);
 <<<<<<< HEAD
+<<<<<<< HEAD
             for (int j = 0; j < walls.size(); j++) {
                 t.collidesWithWall(walls.get(j));
             }//---使每个坦克和walls容器中墙遍历
 =======
+=======
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
             t.collidesWithWall(w3);
             t.collidesWithWall(w4);
             t.collidesWithWall(w5);
@@ -171,6 +186,9 @@ public class TankClient extends Frame {
             t.collidesWithWall(w8);
             t.collidesWithWall(w9);
             t.collidesWithWall(w10);
+<<<<<<< HEAD
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
+=======
 >>>>>>> 93efc341293870539a470358092e3ff590a387ab
             //  判断敌方坦克是否相撞
             t.collidesWithTanks(tankList);
