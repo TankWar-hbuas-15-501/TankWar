@@ -54,13 +54,13 @@ public class ActNormalMode extends JFrame implements ActionListener{
         boxHor.add(boxVer);
         boxVer.add(Box.createRigidArea(new Dimension(100, 20)));
         //boxVer.add(Box.createVerticalGlue());
-        JButton temp = new JButton("吃鸡模式");
-        temp.addActionListener(new ActEatChickenMode());
-        JButton temp2 = new JButton("普通模式");
-        temp2.addActionListener(new ActNormalMode());
-        boxVer.add(temp2);
-        boxVer.add(temp);
-        // boxVer.add(new JButton("开始游戏"));
+        JButton buttonEatChicken = new JButton("吃鸡模式");
+        buttonEatChicken.addActionListener(new ActEatChickenMode());
+        JButton buttonNormal = new JButton("普通模式");
+        buttonNormal.addActionListener(new ActNormalMode());
+        boxVer.add(buttonNormal);
+        boxVer.add(buttonNormal);
+
         boxVer.add(Box.createVerticalStrut(30));
         boxVer.add(new JButton("难度选择"));
         boxVer.add(Box.createVerticalStrut(30));
