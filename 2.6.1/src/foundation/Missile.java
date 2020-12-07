@@ -171,6 +171,10 @@ public class Missile {
          */
         //  子弹撞到墙
         if(this.live&& this.getRect().intersects(w.getRect())){
+            //子弹撞到墙并且墙类型为1时墙阵亡，将这面墙在容器中移除
+            if(w.type==0)
+                w.live=false;
+                tc.walls.remove(w);
             //  子弹阵亡
             this.live=false;
             //  表示撞到墙

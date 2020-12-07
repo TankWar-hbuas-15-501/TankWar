@@ -7,21 +7,36 @@ import java.util.ArrayList;
 
 //  继承Frame图形窗口
 public class TankClient extends Frame {
-    public static boolean moshi = true;
+    public static boolean mode = true;
     //  窗口宽度
     public static final int GAME_WIDTH = 1200;
     //  窗口高度
     public static final int GAME_HEIGHT = 1000;
 
     //  定义两面墙
-    Wall w1 = new Wall(100, 200, 20, 150, this),
-            w2 = new Wall(300, 100, 300, 20, this);
+<<<<<<< HEAD
+    Wall w1 = new Wall(100, 200, 20, 150, 1,this),
+            w2 = new Wall(300, 100, 300, 20,1 ,this);
+=======
+    Wall w1 = new Wall(440, 800, 30, 30,1, this),
+            w2 = new Wall(570, 920, 30, 30, 0,this),
+            w3 = new Wall(600,950,30,30,2,this),
+            w4 = new Wall(600,920,30,30,0,this),
+            w5 = new Wall(540,920,30,30,1,this),
+            w6 = new Wall(540,950,30,30,3,this),
+            w7 = new Wall(500,800,30,30,1,this),
+            w8 = new Wall(470,800,30,30,4,this),
+            w9 = new Wall(530,800,30,30,1,this),
+            w10 = new Wall(560,800,30,30,1,this);
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
     //  定义一个友方坦克
     Tank myTank = new Tank(170, 100, true, Tank.Direction.STOP, this);
-    //  创建容器，存放敌方坦克
 
-    PoisonRing pr = new PoisonRing(150);
     //定义一个5000毫秒缩小一次的毒圈
+    PoisonRing pr = new PoisonRing(150);
+    //  创建容器，存放墙
+    List<Wall> walls = new ArrayList<>();
+    //  创建容器，存放敌方坦克
     List<Tank> tankList = new ArrayList<Tank>();
     //  创建容器，存放爆炸
     List<Explode> explodeList = new ArrayList<Explode>();
@@ -69,6 +84,7 @@ public class TankClient extends Frame {
         }
     }
 
+    int count = 1;//让墙只画一次
     //  重写重画方法。需要重画时，默认调用
     public void paint(Graphics g) {
         //  显示容器中子弹个数
@@ -96,6 +112,21 @@ public class TankClient extends Frame {
             //  判断子弹是否撞墙
             m.hitWall(w1);
             m.hitWall(w2);
+<<<<<<< HEAD
+            for (int j = 0; j < walls.size(); j++) {
+                m.hitWall(walls.get(j));
+            }//---使每个子弹和walls容器中墙遍历
+=======
+            m.hitWall(w3);
+            m.hitWall(w4);
+            m.hitWall(w5);
+            m.hitWall(w6);
+            m.hitWall(w7);
+            m.hitWall(w8);
+            m.hitWall(w9);
+            m.hitWall(w10);
+
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
             m.draw(g);
         }
         //  画我方坦克
@@ -103,9 +134,18 @@ public class TankClient extends Frame {
         //  判断我方坦克是否撞墙
         myTank.collidesWithWall(w1);
         myTank.collidesWithWall(w2);
+        myTank.collidesWithWall(w3);
+        myTank.collidesWithWall(w4);
+        myTank.collidesWithWall(w5);
+        myTank.collidesWithWall(w6);
+        myTank.collidesWithWall(w7);
+        myTank.collidesWithWall(w8);
+        myTank.collidesWithWall(w9);
+        myTank.collidesWithWall(w10);
+       // myTank.collidesWithWall(f1);
         //判断我方坦克是否在毒圈外
         //根据moshi参数改变模式
-        if(moshi)
+        if(mode)
             myTank.outPoisonRing(pr);
         //  判断我方坦克是否与敌方坦克相撞
         //myTank.collidesWithTanks(tankList);
@@ -118,12 +158,33 @@ public class TankClient extends Frame {
             //  判断敌方坦克是否撞墙
             t.collidesWithWall(w1);
             t.collidesWithWall(w2);
+<<<<<<< HEAD
+            for (int j = 0; j < walls.size(); j++) {
+                t.collidesWithWall(walls.get(j));
+            }//---使每个坦克和walls容器中墙遍历
+=======
+            t.collidesWithWall(w3);
+            t.collidesWithWall(w4);
+            t.collidesWithWall(w5);
+            t.collidesWithWall(w6);
+            t.collidesWithWall(w7);
+            t.collidesWithWall(w8);
+            t.collidesWithWall(w9);
+            t.collidesWithWall(w10);
+>>>>>>> 93efc341293870539a470358092e3ff590a387ab
             //  判断敌方坦克是否相撞
             t.collidesWithTanks(tankList);
             //判断敌方坦克是否在毒圈外
-            if(moshi)
+            if(mode)
                 t.outPoisonRing(pr);
             t.draw(g);
+        }
+        //创建墙
+        if(count==1) {
+            for (int i = 0; i < w1.pos.length; i++) {
+                walls.add(new Wall(w1.pos[i][0],w1.pos[i][1],30,30,0,this));
+            }
+            count=0;
         }
         //  画爆炸
         for (int i = 0; i < explodeList.size(); i++) {
@@ -131,13 +192,27 @@ public class TankClient extends Frame {
             Explode e = explodeList.get(i);
             e.draw(g);
         }
+        for (int i = 0; i < walls.size(); i++) {
+            Wall w = walls.get(i);
+            w.draw(g);
+        }//画出全部墙
+
         //  画墙
         w1.draw(g);
         w2.draw(g);
+        w3.draw(g);
+        w4.draw(g);
+        w5.draw(g);
+        w6.draw(g);
+        w7.draw(g);
+        w8.draw(g);
+        w9.draw(g);
+        w10.draw(g);
+        //f1.draw(g);
         //  画出血块
         b.draw(g);
         //画出毒圈
-        if(moshi)
+        if(mode)
         pr.draw(g);
     }
 
