@@ -8,7 +8,9 @@ import javax.swing.*;
 public class Menu {
     private JFrame menuFrame;//菜单框架
 
-    private JPanel panelControl = new JPanel();//容器类
+    private JPanel panelMainMenu = new JPanel();//主菜单容器
+    private JPanel panelModelSelect=new JPanel();//模式选择容器
+    private JPanel cards=new JPanel(new CardLayout());//主容器类，主要用于界面切换
     private Box boxVer = Box.createVerticalBox(), boxHor = Box.createHorizontalBox();
 
     Menu() {
@@ -17,15 +19,15 @@ public class Menu {
 
     void addButton(String text, String icon) {//添加按钮，并设置文字和图片
         JButton temp = new JButton(text, createImageIcon(icon, ""));
-        panelControl.add(temp);
-        menuFrame.add(panelControl);
+        panelMainMenu.add(temp);
+        menuFrame.add(panelMainMenu);
     }
 
     void addButton(String text) {//添加按钮，并设置文字
         JButton temp = new JButton(text);
 
-        panelControl.add(temp);
-        menuFrame.add(panelControl);
+        panelMainMenu.add(temp);
+        menuFrame.add(panelMainMenu);
     }
 public class ActEatChickenMode extends JFrame implements ActionListener{
         @Override
@@ -44,7 +46,22 @@ public class ActNormalMode extends JFrame implements ActionListener{
             TankClient.mode = false;//
         }
 }
+public class ActModelSelect extends JFrame implements ActionListener{
+        @Override
+    public void actionPerformed(ActionEvent e){
+            JButton buttonEatChicken = new JButton("吃鸡模式");
+            buttonEatChicken.addActionListener(new ActEatChickenMode());
+            JButton buttonNormal = new JButton("普通模式");
+            buttonNormal.addActionListener(new ActNormalMode());
+            panelModelSelect.add(buttonEatChicken);
+            panelModelSelect.add(buttonNormal);
+            CardLayout c1=(CardLayout)(cards.getLayout()) ;
+            c1.show(cards,"modelSelect");
+        }
+
+}
     void iniMenu() {
+
 
         menuFrame = new JFrame("坦克大战");
         menuFrame.setLocation(300, 50);
@@ -54,18 +71,26 @@ public class ActNormalMode extends JFrame implements ActionListener{
         boxHor.add(boxVer);
         boxVer.add(Box.createRigidArea(new Dimension(100, 20)));
         //boxVer.add(Box.createVerticalGlue());
-        JButton buttonEatChicken = new JButton("吃鸡模式");
-        buttonEatChicken.addActionListener(new ActEatChickenMode());
-        JButton buttonNormal = new JButton("普通模式");
-        buttonNormal.addActionListener(new ActNormalMode());
-        boxVer.add(buttonNormal);
-        boxVer.add(buttonNormal);
+
+        JButton buttonModeSelect=new JButton("模式选择");
+        buttonModeSelect.addActionListener(new ActModelSelect());
+        boxVer.add(buttonModeSelect);
 
         boxVer.add(Box.createVerticalStrut(30));
         boxVer.add(new JButton("难度选择"));
         boxVer.add(Box.createVerticalStrut(30));
         boxVer.add(new JButton("退出"));
-        menuFrame.add(boxHor);
+        panelMainMenu.add(boxHor);
+        cards.add(panelMainMenu,"mainMenu");
+        cards.add(panelModelSelect,"modelSelect");
+
+        CardLayout c1=(CardLayout)(cards.getLayout()) ;
+        c1.show(cards,"mainMenu");
+
+
+        menuFrame.add(cards);
+
+        //menuFrame.add(panelMainMenu);
         menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menuFrame.setVisible(true);
     }
