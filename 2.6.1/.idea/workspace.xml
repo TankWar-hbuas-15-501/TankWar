@@ -19,12 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31b565a0-2981-4ce2-aa1e-a38572bca319" name="默认的" comment="更改菜单按键命名">
+    <list default="true" id="31b565a0-2981-4ce2-aa1e-a38572bca319" name="默认的" comment="主菜单多界面切换">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2.6.1/Menu$ActEatChickenMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2.6.1/Menu$ActEatChickenMode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2.6.1/Menu$ActNormalMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2.6.1/Menu$ActNormalMode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2.6.1/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2.6.1/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2.6.1/foundation/TankClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2.6.1/foundation/TankClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607321180587</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="主菜单多界面切换">
+      <created>1607325988006</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607325988006</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,7 +164,8 @@
     <MESSAGE value="使用Box来实现菜单" />
     <MESSAGE value="更新开始窗口大小" />
     <MESSAGE value="更改菜单按键命名" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改菜单按键命名" />
+    <MESSAGE value="主菜单多界面切换" />
+    <option name="LAST_COMMIT_MESSAGE" value="主菜单多界面切换" />
   </component>
   <component name="WindowStateProjectService">
     <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1605916110961">
@@ -176,28 +181,28 @@
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607239085817" />
     <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607063160010" />
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom" timestamp="1607325932821">
+    <state width="1323" height="570" key="GridCell.Tab.0.bottom" timestamp="1607328191690">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607325932821" />
+    <state width="1323" height="570" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607328191690" />
     <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
     <state width="1025" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607169394466" />
-    <state width="1323" height="222" key="GridCell.Tab.0.center" timestamp="1607325932821">
+    <state width="1323" height="570" key="GridCell.Tab.0.center" timestamp="1607328191690">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1607325932821" />
+    <state width="1323" height="570" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1607328191690" />
     <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
     <state width="1025" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607169394466" />
-    <state width="1323" height="222" key="GridCell.Tab.0.left" timestamp="1607325932821">
+    <state width="1323" height="570" key="GridCell.Tab.0.left" timestamp="1607328191690">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1607325932821" />
+    <state width="1323" height="570" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1607328191690" />
     <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
     <state width="1025" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607169394466" />
-    <state width="1323" height="222" key="GridCell.Tab.0.right" timestamp="1607325932821">
+    <state width="1323" height="570" key="GridCell.Tab.0.right" timestamp="1607328191690">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1607325932821" />
+    <state width="1323" height="570" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1607328191690" />
     <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607260511371" />
     <state width="1025" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607169394466" />
     <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1607325932821">
@@ -224,38 +229,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606033819055" />
-    <state x="275" y="83" key="Vcs.Push.Dialog.v2" timestamp="1607321182400">
+    <state x="275" y="83" key="Vcs.Push.Dialog.v2" timestamp="1607325990444">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="83" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607321182400" />
+    <state x="275" y="83" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607325990444" />
     <state x="283" y="448" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606996396046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="283" y="448" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606996396046" />
-    <state x="743" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607164564395">
+    <state x="743" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607327861056">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="743" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1607164564395" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Menu.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Menu.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Menu.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="743" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1607327861056" />
   </component>
 </project>
