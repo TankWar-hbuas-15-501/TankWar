@@ -1,6 +1,3 @@
-import foundation.Tank;
-import javafx.scene.layout.Pane;
-import oracle.jrockit.jfr.JFR;
 import foundation.TankClient;
 
 import java.awt.*;
@@ -9,28 +6,44 @@ import java.net.URL;
 import javax.swing.*;
 
 public class Menu {
-    private JFrame menuFrame;
+    private JFrame menuFrame;//菜单框架
 
-    private JPanel panelControl = new JPanel();
+    private JPanel panelControl = new JPanel();//容器类
     private Box boxVer = Box.createVerticalBox(), boxHor = Box.createHorizontalBox();
 
     Menu() {
         iniMenu();
     }
 
-    void addButton(String text, String icon) {
+    void addButton(String text, String icon) {//添加按钮，并设置文字和图片
         JButton temp = new JButton(text, createImageIcon(icon, ""));
         panelControl.add(temp);
         menuFrame.add(panelControl);
     }
 
-    void addButton(String text) {
+    void addButton(String text) {//添加按钮，并设置文字
         JButton temp = new JButton(text);
 
         panelControl.add(temp);
         menuFrame.add(panelControl);
     }
-
+public class ActEatChickenMode extends JFrame implements ActionListener{
+        @Override
+    public void actionPerformed(ActionEvent e){//事件监听，吃鸡模式按键监听
+            String[] t = new String[1];
+            menuFrame.setVisible(false);
+            TankClient.main(t);//调用游戏
+        }
+}
+public class ActNormalMode extends JFrame implements ActionListener{
+        @Override
+    public void actionPerformed(ActionEvent e){//事件监听，普通模式按键监听
+            String[] t = new String[1];
+            menuFrame.setVisible(false);
+            TankClient.main(t);//调用 游戏
+            TankClient.mode = false;//
+        }
+}
     void iniMenu() {
 
         menuFrame = new JFrame("坦克大战");
@@ -42,24 +55,9 @@ public class Menu {
         boxVer.add(Box.createRigidArea(new Dimension(100, 20)));
         //boxVer.add(Box.createVerticalGlue());
         JButton temp = new JButton("吃鸡模式");
-        temp.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String[] t = new String[1];
-                menuFrame.setVisible(false);
-                TankClient.main(t);
-            }
-        });
+        temp.addActionListener(new ActEatChickenMode());
         JButton temp2 = new JButton("普通模式");
-        temp2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String[] t = new String[1];
-                menuFrame.setVisible(false);
-                TankClient.main(t);
-                TankClient.moshi = false;
-            }
-        });
+        temp2.addActionListener(new ActNormalMode());
         boxVer.add(temp2);
         boxVer.add(temp);
         // boxVer.add(new JButton("开始游戏"));
@@ -67,14 +65,12 @@ public class Menu {
         boxVer.add(new JButton("难度选择"));
         boxVer.add(Box.createVerticalStrut(30));
         boxVer.add(new JButton("退出"));
-
         menuFrame.add(boxHor);
         menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         menuFrame.setVisible(true);
     }
 
-    private static ImageIcon createImageIcon(String path, String description) {
+    private static ImageIcon createImageIcon(String path, String description) {//创建图片资源
         URL imgURL = Menu.class.getResource(path);
         if (imgURL != null) return new ImageIcon(imgURL, description);
         else {
