@@ -49,13 +49,16 @@ public class ActNormalMode extends JFrame implements ActionListener{
 public class ActModelSelect extends JFrame implements ActionListener{
         @Override
     public void actionPerformed(ActionEvent e){
-                Box temp=Box.createVerticalBox();
+            Box temp=Box.createVerticalBox();
+            temp.add(Box.createVerticalStrut(70));
 
             JButton buttonEatChicken = new JButton("吃鸡模式");
             buttonEatChicken.addActionListener(new ActEatChickenMode());
+
             JButton buttonNormal = new JButton("普通模式");
             buttonNormal.addActionListener(new ActNormalMode());
             temp.add(buttonEatChicken);
+            temp.add(Box.createVerticalStrut(30));
             temp.add(buttonNormal);
             panelModelSelect.add(temp);
             //panelModelSelect.add(buttonNormal);
@@ -75,9 +78,9 @@ public class ActModelSelect extends JFrame implements ActionListener{
         menuFrame.setLayout(new GridLayout());
         boxHor.setSize(200, 50);
         boxHor.add(boxVer);
-        boxVer.add(Box.createRigidArea(new Dimension(100, 20)));
+        boxVer.add(Box.createRigidArea(new Dimension(30, 0)));
         //boxVer.add(Box.createVerticalGlue());
-
+        boxVer.add(Box.createVerticalStrut(50));
         JButton buttonModeSelect=new JButton("模式选择");
         buttonModeSelect.addActionListener(new ActModelSelect());
         boxVer.add(buttonModeSelect);
