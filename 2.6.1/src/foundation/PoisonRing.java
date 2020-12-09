@@ -29,7 +29,7 @@ public class PoisonRing {
 
     public void draw(Graphics g){
         Color c = g.getColor();
-        g.setColor(Color.BLACK);
+        g.setColor(Color.GREEN);
         g.drawRect(x,y,w,h);
         g.setColor(c);
         move();

@@ -56,7 +56,7 @@ public class Missile {
         //  保存前景色
         Color c = g.getColor();
         //  将绘图颜色设置为BLACK黑色
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         //  画园，即子弹（子弹起点），以窗口(x,y)为起点，对长为10宽为10的矩形作内切实心圆
         g.fillOval(x, y, WIDTH, HEIGHT);
         //  将绘图颜色还原成前景色
@@ -129,12 +129,12 @@ public class Missile {
             this.good!=t.isGood()子弹和坦克不属于同一阵营
          */
         //  子弹打中坦克
-        if (this.live &&this.getRect().intersects(t.getRect()) && t.isLive()&&this.good!=t.isGood()) {
+        if (this.live && this.getRect().intersects(t.getRect()) && t.isLive() && this.good != t.isGood()) {
             //  子弹和坦克相交
             //  坦克生命值减少20
-            t.setLife(t.getLife()-20);
+            t.setLife(t.getLife() - 20);
             //  坦克生命值<=0
-            if(t.getLife()<=0)
+            if (t.getLife() <= 0)
                 //  坦克阵亡
                 t.setLive(false);
             //  将该子弹生存变量live=false，表示其击中目标
@@ -161,8 +161,9 @@ public class Missile {
         }
         return false;
     }
+
     //  子弹打中墙（子弹与墙的碰撞检测）
-    public boolean hitWall(Wall w){
+    public boolean hitWall(Wall w) {
         /*
             this.live子弹处于存活状态
             this.getRect()获得调用hitWall方法的子弹的矩形
@@ -170,10 +171,20 @@ public class Missile {
             w.getRect()获得调用hitWall方法形参w墙的矩形
          */
         //  子弹撞到墙
-        if(this.live&& this.getRect().intersects(w.getRect())){
-            //  子弹阵亡
-            this.live=false;
-            //  表示撞到墙
+        if (this.live && this.getRect().intersects(w.getRect())) {
+            if(w.x==600&&w.y==950){
+                tc.myTank.setLive(false);
+            }
+            //  如果击中的不是水子弹就阵亡
+            if (w.index != 1)
+                this.live = false;
+            //如果打中铁和水以外的墙就把墙击毁
+            if (w.index == 3 || w.index == 1 || w.index == 4) {
+                return true;
+            } else {
+                w.setLive(false);
+                tc.walls.remove(w);
+            }
             return true;
         }
         //  未撞到墙

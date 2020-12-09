@@ -72,6 +72,58 @@ public class ActNormalMode extends JFrame implements ActionListener{
             TankClient.mode = false;
         }
 }
+public class ActBack extends JFrame implements ActionListener{
+        @Override
+    public void actionPerformed(ActionEvent e){
+            showMenu();
+        }
+}
+void prepareMainMenu(){
+    Box boxVer = Box.createVerticalBox(), boxHor = Box.createHorizontalBox();
+
+    boxHor.setSize(200, 50);
+    boxHor.add(boxVer);
+    boxVer.add(Box.createRigidArea(new Dimension(30, 0)));
+    //boxVer.add(Box.createVerticalGlue());
+    boxVer.add(Box.createVerticalStrut(50));
+    JButton buttonModeSelect=new JButton("模式选择");
+    buttonModeSelect.addActionListener(new ActModelSelect());
+    boxVer.add(buttonModeSelect);
+
+    boxVer.add(Box.createVerticalStrut(30));
+    boxVer.add(new JButton("难度选择"));
+    boxVer.add(Box.createVerticalStrut(30));
+    boxVer.add(new JButton("退出"));
+    panelMainMenu.add(boxHor);
+}
+void prepareModelSelect(){
+    Box temp=Box.createVerticalBox();
+    temp.add(Box.createVerticalStrut(70));//设置间距
+    JButton buttonEatChicken = new JButton("吃鸡模式");
+    buttonEatChicken.addActionListener(new ActEatChickenMode());
+    JButton buttonNormal = new JButton("普通模式");
+    buttonNormal.addActionListener(new ActNormalMode());
+    JButton buttonQuit=new JButton("返回");
+    buttonQuit.addActionListener(new ActBack());
+    temp.add(buttonEatChicken);//添加按键
+    temp.add(Box.createVerticalStrut(30));//设置间距
+    temp.add(buttonNormal);//添加按键
+    temp.add(Box.createVerticalStrut(30));//设置间距
+    JButton buttonBack=new JButton("返回");
+    buttonBack.addActionListener(new ActBack());
+    temp.add(buttonBack);
+    panelModelSelect.add(temp);
+}
+void showModelSelect(){
+
+    //panelModelSelect.add(buttonNormal);
+    CardLayout c1=(CardLayout)(cards.getLayout()) ;
+    c1.show(cards,"modelSelect");
+}
+    void showMenu(){
+        CardLayout c1=(CardLayout)(cards.getLayout()) ;
+        c1.show(cards,"mainMenu");
+    }
 public class ActModelSelect extends JFrame implements ActionListener{
         @Override
         /*
@@ -80,51 +132,21 @@ public class ActModelSelect extends JFrame implements ActionListener{
          @return:   void
          */
     public void actionPerformed(ActionEvent e){
-            Box temp=Box.createVerticalBox();
-            temp.add(Box.createVerticalStrut(70));//设置间距
-            JButton buttonEatChicken = new JButton("吃鸡模式");
-            buttonEatChicken.addActionListener(new ActEatChickenMode());
-            JButton buttonNormal = new JButton("普通模式");
-            buttonNormal.addActionListener(new ActNormalMode());
-            temp.add(buttonEatChicken);//添加按键
-            temp.add(Box.createVerticalStrut(30));//设置间距
-            temp.add(buttonNormal);//添加按键
-            JButton buttonBack=new JButton("返回");
-
-            panelModelSelect.add(temp);
-            //panelModelSelect.add(buttonNormal);
-            CardLayout c1=(CardLayout)(cards.getLayout()) ;
-            c1.show(cards,"modelSelect");
+            showModelSelect();
         }
 
 }
 
     void iniMenu() {
-        Box boxVer = Box.createVerticalBox(), boxHor = Box.createHorizontalBox();
         menuFrame = new JFrame("坦克大战");
         menuFrame.setLocation(300, 50);
         menuFrame.setSize(400, 400);
         menuFrame.setLayout(new GridLayout());
-        boxHor.setSize(200, 50);
-        boxHor.add(boxVer);
-        boxVer.add(Box.createRigidArea(new Dimension(30, 0)));
-        //boxVer.add(Box.createVerticalGlue());
-        boxVer.add(Box.createVerticalStrut(50));
-        JButton buttonModeSelect=new JButton("模式选择");
-        buttonModeSelect.addActionListener(new ActModelSelect());
-        boxVer.add(buttonModeSelect);
-
-        boxVer.add(Box.createVerticalStrut(30));
-        boxVer.add(new JButton("难度选择"));
-        boxVer.add(Box.createVerticalStrut(30));
-        boxVer.add(new JButton("退出"));
-        panelMainMenu.add(boxHor);
+        prepareMainMenu();
+        prepareModelSelect();
         cards.add(panelMainMenu,"mainMenu");
         cards.add(panelModelSelect,"modelSelect");
-
-        CardLayout c1=(CardLayout)(cards.getLayout()) ;
-        c1.show(cards,"mainMenu");
-
+        showMenu();
 
         menuFrame.add(cards);
 

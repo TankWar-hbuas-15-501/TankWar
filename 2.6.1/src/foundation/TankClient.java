@@ -1,10 +1,14 @@
 package foundation;//  导入Frame类
 
+import sun.awt.image.ToolkitImage;
+
+import java.applet.AppletContext;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 import java.util.ArrayList;
-
+import java.awt.Toolkit;
+import java.awt.Image;
 //  继承Frame图形窗口
 public class TankClient extends Frame {
     public static boolean mode = true;
@@ -13,19 +17,9 @@ public class TankClient extends Frame {
     //  窗口高度
     public static final int GAME_HEIGHT = 1000;
 
-    //  定义两面墙
-    Wall w1 = new Wall(440, 800, 30, 30,1, this),
-            w2 = new Wall(570, 920, 30, 30, 0,this),
-            w3 = new Wall(600,950,30,30,2,this),
-            w4 = new Wall(600,920,30,30,0,this),
-            w5 = new Wall(540,920,30,30,1,this),
-            w6 = new Wall(540,950,30,30,3,this),
-            w7 = new Wall(500,800,30,30,1,this),
-            w8 = new Wall(470,800,30,30,4,this),
-            w9 = new Wall(530,800,30,30,1,this),
-            w10 = new Wall(560,800,30,30,1,this);
+    List<Wall> walls = new ArrayList<>();
     //  定义一个友方坦克
-    Tank myTank = new Tank(170, 100, true, Tank.Direction.STOP, this);
+    Tank myTank = new Tank(500, 900, true, Tank.Direction.STOP, this);
     //  创建容器，存放敌方坦克
 
     PoisonRing pr = new PoisonRing(150);
@@ -52,7 +46,7 @@ public class TankClient extends Frame {
         //  获得画笔当前颜色
         Color c = gOffScreen.getColor();
         //  设置画笔颜色为GREEN绿色，画背景
-        gOffScreen.setColor(Color.GREEN);
+        gOffScreen.setColor(Color.BLACK);
         //  将图片填充为画笔颜色（GREEN绿色）
         gOffScreen.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
         //  还原画笔颜色
@@ -73,115 +67,35 @@ public class TankClient extends Frame {
         tankList.clear();
         //  根据难易度创建新敌方坦克
         for (int i = 0; i < index*8; i++) {
-            tankList.add(new Tank(30 * (i + 1), 400, false, Tank.Direction.D, this));
+            tankList.add(new Tank(200 + (i *50), 75, false, Tank.Direction.D, this));
         }
     }
 
+    int count = 1;//只画一次墙
     //  重写重画方法。需要重画时，默认调用
     public void paint(Graphics g) {
-        //  显示容器中子弹个数
-        g.drawString("missiles count:" + missileList.size(), 10, 50);
-        //  显示容器中爆炸个数
-        g.drawString("explodes count:" + explodeList.size(), 10, 70);
-        //  显示容器中敌方坦克个数
-        g.drawString("tanks    count:" + tankList.size(), 10, 90);
-        //  显示我方生命值
-        g.drawString("live     count:" + myTank.getLife(), 10, 110);
-
-        //  检测敌方坦克是否全部阵亡
+        //画出状态栏
+        stateShow(g);
+        //  传入难易度
         if(tankList.size()==0){
-            //  传入难易度
             InitTanks(Difficulty.getDiff());
         }
-        //  画子弹
-        for (int i = 0; i < missileList.size(); i++) {
-            //  画出容器中的所有子弹
-            Missile m = missileList.get(i);
-            //  判断该子弹是否击中敌方坦克中的一个
-            m.hitTanks(tankList);
-            //  判断子弹是否击中我方坦克
-            m.hitTank(myTank);
-            //  判断子弹是否撞墙
-            m.hitWall(w1);
-            m.hitWall(w2);
-            m.hitWall(w3);
-            m.hitWall(w4);
-            m.hitWall(w5);
-            m.hitWall(w6);
-            m.hitWall(w7);
-            m.hitWall(w8);
-            m.hitWall(w9);
-            m.hitWall(w10);
-
-            m.draw(g);
+        //添加墙对象到容器中，并只添加一次
+        if(count==1) {
+            addWalls();
+            count=0;
         }
-        //  画我方坦克
-        myTank.draw(g);
-        //  判断我方坦克是否撞墙
-        myTank.collidesWithWall(w1);
-        myTank.collidesWithWall(w2);
-        myTank.collidesWithWall(w3);
-        myTank.collidesWithWall(w4);
-        myTank.collidesWithWall(w5);
-        myTank.collidesWithWall(w6);
-        myTank.collidesWithWall(w7);
-        myTank.collidesWithWall(w8);
-        myTank.collidesWithWall(w9);
-        myTank.collidesWithWall(w10);
-       // myTank.collidesWithWall(f1);
-        //判断我方坦克是否在毒圈外
-        //根据moshi参数改变模式
-        if(mode)
-            myTank.outPoisonRing(pr);
-        //  判断我方坦克是否与敌方坦克相撞
-        //myTank.collidesWithTanks(tankList);
-        //  判断我方坦克是否迟到坦克
-        myTank.eat(b);
-        //  画敌方坦克
-        for (int i = 0; i < tankList.size(); i++) {
-            //  画出容器中的所有爆炸
-            Tank t = tankList.get(i);
-            //  判断敌方坦克是否撞墙
-            t.collidesWithWall(w1);
-            t.collidesWithWall(w2);
-            t.collidesWithWall(w3);
-            t.collidesWithWall(w4);
-            t.collidesWithWall(w5);
-            t.collidesWithWall(w6);
-            t.collidesWithWall(w7);
-            t.collidesWithWall(w8);
-            t.collidesWithWall(w9);
-            t.collidesWithWall(w10);
-            //  判断敌方坦克是否相撞
-            t.collidesWithTanks(tankList);
-            //判断敌方坦克是否在毒圈外
-            if(mode)
-                t.outPoisonRing(pr);
-            t.draw(g);
-        }
-        //  画爆炸
-        for (int i = 0; i < explodeList.size(); i++) {
-            //  画出容器中的所有爆炸
-            Explode e = explodeList.get(i);
-            e.draw(g);
-        }
-        //  画墙
-        w1.draw(g);
-        w2.draw(g);
-        w3.draw(g);
-        w4.draw(g);
-        w5.draw(g);
-        w6.draw(g);
-        w7.draw(g);
-        w8.draw(g);
-        w9.draw(g);
-        w10.draw(g);
-        //f1.draw(g);
+        //画出容器中所有墙
+        drawWalls(g);
+        //画出导弹和导弹撞墙，击中坦克时的状态
+        drawMissiles(g);
+        //画出坦克相撞和坦克撞墙，爆炸时的状态
+        drawTanks(g);
+        //通过菜单中的选择改变mode参数来选择游戏模式
+        chioseMode(mode,g);
         //  画出血块
         b.draw(g);
-        //画出毒圈
-        if(mode)
-        pr.draw(g);
+        myTank.eat(b);
     }
 
     //  启动窗口
@@ -190,6 +104,9 @@ public class TankClient extends Frame {
         Difficulty.setDiff(Difficulty.Diff.Normal);
         //  添加敌方坦克
         InitTanks(Difficulty.getDiff());
+        //Image imageTemp=
+
+       this.setIconImage(Toolkit.getDefaultToolkit().createImage("res/timg.png"));
         //  定位窗口位置，
         this.setLocation(300, 50);
         //  指定窗口大小，宽800，高600
@@ -213,6 +130,140 @@ public class TankClient extends Frame {
         setVisible(true);
         //  启动重画线程
         new Thread(new PaintThread()).start();
+    }
+    /*
+      @param:
+      @describe: 通过Wall类设置的参数将砖块加入到容器中
+      @return:   void
+      */
+    public void addWalls(){
+        Wall w = new Wall();
+        for (int i = 0; i < 30; i=i+2) {//砖块
+            walls.add(new Wall(50*i, 400, 50, 50, 0, this));
+        }
+        for (int i = 0; i < 30; i++) {//砖块
+            walls.add(new Wall(50*i, 120, 50, 50, 0, this));
+        }
+        for (int i = 0; i < 30; i++) {//砖块
+            walls.add(new Wall(50+50*i, 200, 50, 50, 0, this));
+        }
+
+        for (int i = 0; i < 30; i=i+2) {//水
+            walls.add(new Wall(50*i, 200, 50, 50, 1, this));
+        }
+
+        for (int i = 0; i < 30; i=i+2) {//铁块
+            walls.add(new Wall(50*i, 300, 50, 50, 3, this));
+        }
+        for (int i = 0; i < w.pos1.length; i++) {//砖块
+            walls.add(new Wall(w.pos1[i][0], w.pos1[i][1], 50, 50, 0, this));
+        }
+            for (int i = 0; i < w.pos3.length; i++) {//老巢
+                walls.add(new Wall(w.pos3[i][0], w.pos3[i][1], 50, 50, 2, this));
+            }
+        /*for (int i = 0; i < w.pos5.length; i++) {//草
+            walls.add(new Wall(w.pos5[i][0], w.pos5[i][1], 50, 50, 4, this));
+        }*/
+    }
+    /*
+           @param:Graphics 画笔
+           @describe: 遍历容器画出所有墙
+           @return:   void
+           */
+    public void drawWalls(Graphics g){
+        for (int i = 0; i < walls.size(); i++) {
+            walls.get(i).draw(g);
+        }
+    }
+
+    /*
+       @param:Graphics 画笔
+       @describe: 显示子弹个数，爆炸个数，坦克个数，我方生命值等内容
+       @return:   void
+       */
+    public void stateShow(Graphics g){
+        //  显示容器中子弹个数
+        g.drawString("missiles count:" + missileList.size(), 10, 50);
+        //  显示容器中爆炸个数
+        g.drawString("explodes count:" + explodeList.size(), 10, 70);
+        //  显示容器中敌方坦克个数
+        g.drawString("tanks    count:" + tankList.size(), 10, 90);
+        //  显示我方生命值
+        g.drawString("live     count:" + myTank.getLife(), 10, 110);
+
+    }
+    /*
+      @param:Graphics 画笔
+      @describe: 遍历子弹和遍历墙容器，判断是否有子弹是否击中其中一面墙
+      @return:   void
+      */
+    public void drawMissiles(Graphics g){
+        //  画子弹
+        for (int i = 0; i < missileList.size(); i++) {
+            //  画出容器中的所有子弹
+            Missile m = missileList.get(i);
+            //判断子弹是否击中墙
+            for (int j = 0; j < walls.size(); j++) {
+                m.hitWall(walls.get(j));
+            }
+            //  判断该子弹是否击中敌方坦克中的一个
+            m.hitTanks(tankList);
+            //  判断子弹是否击中我方坦克
+            m.hitTank(myTank);
+            //  判断子弹是否撞墙
+            m.draw(g);
+        }
+    }
+    /*
+      @param:Graphics 画笔
+      @describe: 画出坦克在相互碰撞，撞墙，爆炸时的情况
+      @return:   void
+      */
+    public void drawTanks(Graphics g){
+        for (int i = 0; i < tankList.size(); i++) {
+            //  画出容器中的所有爆炸
+            Tank t = tankList.get(i);
+            //  判断敌方坦克是否撞墙
+            for (int j = 0; j < walls.size(); j++) {
+                t.collidesWithWall(walls.get(j));
+            }
+            //  判断敌方坦克是否相撞
+            t.collidesWithTanks(tankList);
+            myTank.collidesWithTanks(tankList);
+            // 画敌方坦克
+            t.draw(g);
+        }
+        //  画我方坦克
+        myTank.draw(g);
+        //  判断我方坦克是否撞墙
+        for (int j = 0; j < walls.size(); j++) {
+            myTank.collidesWithWall(walls.get(j));
+        }
+        //  画爆炸
+        for (int i = 0; i < explodeList.size(); i++) {
+            //  画出容器中的所有爆炸
+            Explode e = explodeList.get(i);
+            e.draw(g);
+        }
+
+    }
+
+
+    /*
+          @param:boolean 是否选择吃鸡模式
+          @param:Graphics 画笔
+          @describe: 如果mode为true，就是选择吃鸡模式，将画出毒圈并对在毒圈外的全部坦克扣血
+          @return:   void
+          */
+    public void chioseMode(boolean mode,Graphics g){
+        if(mode) {
+            for (int i = 0; i < tankList.size(); i++) {
+                Tank t = tankList.get(i);
+                t.outPoisonRing(pr);
+            }
+            myTank.outPoisonRing(pr);
+            pr.draw(g);
+        }
     }
 
     public static void main(String[] args) {
